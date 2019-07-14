@@ -1,6 +1,5 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
-const { commentSchema } = require("./comment");
 
 const MainCard = mongoose.model(
   "MainCard",
@@ -24,8 +23,9 @@ const MainCard = mongoose.model(
 function validateMainCard(mainCard) {
   const schema = {
     text: Joi.string().required(),
-    agree: Joi.number(),
-    disagree: Joi.number()
+    agree: Joi.number().required(),
+    disagree: Joi.number().required(),
+    comments: Joi.array().items(Joi.ObjectId())
   };
 
   return Joi.validate(mainCard, schema);

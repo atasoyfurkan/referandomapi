@@ -1,16 +1,15 @@
 const Joi = require("joi");
 const mongoose = require("mongoose");
-const { userSchema } = require("./user");
 
 const commentSchema = new mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User"
+  },
   text: {
     type: String,
     required: true,
     trim: true
-  },
-  name: {
-    type: String,
-    required: true
   },
   upvote: {
     type: Number,
@@ -19,8 +18,9 @@ const commentSchema = new mongoose.Schema({
   date: {
     type: String
   },
-  imgLink: {
-    type: String
+  mainCardId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "MainCard"
   }
 });
 
@@ -28,10 +28,11 @@ const Comment = mongoose.model("Comment", commentSchema);
 
 function validateComment(comment) {
   const schema = {
-    content: Joi.string().required(),
-    userId: Joi.objectId(),
-    upvote: Joi.number(),
-    date: Joi.date()
+    owner: Joi.objectId().required(),
+    text: Joi.string().required(),
+    upvote: Joi.number().required(),
+    date: Joi.string().required(),
+    mainCardId: Joi.objectId().required()
   };
 
   return Joi.validate(comment, schema);
