@@ -7,7 +7,8 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     required: true,
-    trim: true
+    trim: true,
+    unique: true
   },
   password: {
     type: String,
@@ -33,7 +34,12 @@ const userSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
-  //  votedCards: yapilacak
+  votedCards: [
+    {
+      mainCard: { type: mongoose.Schema.Types.ObjectId, ref: "MainCard" },
+      vote: Boolean
+    }
+  ],
   numberOfVote: {
     type: Number,
     default: 0,
@@ -67,8 +73,9 @@ function validateUser(user) {
     password: Joi.string().required(),
     email: Joi.string().required(),
     isAdmin: Joi.boolean(),
-    ppLonk: Joi.string(),
+    ppLink: Joi.string(),
     location: Joi.string(),
+    votedCards: Joi.array(),
     numberOfVote: Joi.number(),
     numberOfComment: Joi.number()
   };

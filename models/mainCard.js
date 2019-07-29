@@ -22,10 +22,7 @@ const MainCard = mongoose.model(
 
 function validateMainCard(mainCard) {
   const schema = {
-    text: Joi.string().required(),
-    agree: Joi.number().required(),
-    disagree: Joi.number().required(),
-    comments: Joi.array().items(Joi.ObjectId())
+    text: Joi.string()
   };
 
   return Joi.validate(mainCard, schema);

@@ -11,6 +11,12 @@ const commentSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  upvotedUsers: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User"
+    }
+  ],
   upvote: {
     type: Number,
     required: true
@@ -30,6 +36,7 @@ function validateComment(comment) {
   const schema = {
     owner: Joi.objectId().required(),
     text: Joi.string().required(),
+    upvotedUsers: Joi.array(),
     upvote: Joi.number().required(),
     date: Joi.string().required(),
     mainCardId: Joi.objectId().required()
