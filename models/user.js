@@ -24,6 +24,15 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  website: {
+    type: String,
+    default: "No website"
+  },
+  status: {
+    type: String,
+    default:
+      "Student at University. Loves to build new tools using popular technologies as a creator."
+  },
   ppLink: {
     type: String,
     default: "img/img_avatar3.png"
@@ -72,6 +81,8 @@ function validateUser(user) {
     username: Joi.string().required(),
     password: Joi.string().required(),
     email: Joi.string().required(),
+    website: Joi.string(),
+    status: Joi.string(),
     isAdmin: Joi.boolean(),
     ppLink: Joi.string(),
     location: Joi.string(),

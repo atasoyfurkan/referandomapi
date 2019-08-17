@@ -11,6 +11,10 @@ const commentSchema = new mongoose.Schema({
     required: true,
     trim: true
   },
+  vote: {
+    type: Boolean,
+    required: true
+  },
   upvotedUsers: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -37,6 +41,7 @@ function validateComment(comment) {
     owner: Joi.objectId().required(),
     text: Joi.string().required(),
     upvotedUsers: Joi.array(),
+    vote: Joi.boolean().required(),
     upvote: Joi.number().required(),
     date: Joi.string().required(),
     mainCardId: Joi.objectId().required()

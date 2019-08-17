@@ -9,6 +9,27 @@ const MainCard = mongoose.model(
       required: true,
       trim: true
     },
+    onergeyiVeren: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    date: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    category: {
+      type: String,
+      required: true,
+      trim: true
+    },
+    url: {
+      type: String,
+      required: true,
+      trim: true,
+      default: "no-url"
+    },
     agree: Number,
     disagree: Number,
     comments: [
