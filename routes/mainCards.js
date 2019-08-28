@@ -12,6 +12,14 @@ router.get("/", async (req, res) => {
   res.send(mainCards);
 });
 
+router.get("/:id", async (req, res) => {
+  const mainCards = await MainCard.findById(req.params.id).populate({
+    path: "comments",
+    populate: { path: "owner" }
+  });
+  res.send(mainCards);
+});
+
 router.put("/:id", [auth], async (req, res) => {
   // const { error } = validate(req.body);
   // if (error) return res.status(400).send(error.details);
