@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
   },
   ppLink: {
     type: String,
-    default: "img/img_avatar3.png"
+    default: config.get("defaultPhoto")
   },
   location: {
     type: String,
