@@ -30,6 +30,9 @@ const MainCard = mongoose.model(
       trim: true,
       default: "no-url"
     },
+    backgroundImage: {
+      type: String
+    },
     agree: Number,
     disagree: Number,
     comments: [

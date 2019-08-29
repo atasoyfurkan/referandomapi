@@ -24,6 +24,12 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
+  name: {
+    type: String
+  },
+  surname: {
+    type: String
+  },
   website: {
     type: String,
     default: "No website"
@@ -81,6 +87,8 @@ function validateUser(user) {
     username: Joi.string().required(),
     password: Joi.string().required(),
     email: Joi.string().required(),
+    name: Joi.string(),
+    surname: Joi.string(),
     website: Joi.string(),
     status: Joi.string(),
     isAdmin: Joi.boolean(),
