@@ -36,6 +36,14 @@ router.put("/:id", [auth], async (req, res) => {
   res.send(comment);
 });
 
+router.delete("/:id", [auth], async (req, res) => {
+  const comment = await Comment.findByIdAndRemove(req.params.id);
+  if (!comment)
+    return res.status(404).send("The comment with the given ID was not found.");
+
+  res.send(comment);
+});
+
 router.get("/", async (req, res) => {
   const comments = await Comment.find();
   res.send(comments);
