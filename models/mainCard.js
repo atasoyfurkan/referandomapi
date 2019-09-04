@@ -40,7 +40,14 @@ const MainCard = mongoose.model(
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment"
       }
-    ]
+    ],
+    expired: {
+      type: Boolean,
+      default: false
+    },
+    meclis: {
+      type: Object
+    }
   })
 );
 
