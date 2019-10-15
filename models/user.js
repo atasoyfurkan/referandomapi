@@ -32,20 +32,20 @@ const userSchema = new mongoose.Schema({
   },
   website: {
     type: String,
-    default: "No website"
+    default: "Website eklenmedi"
   },
   status: {
     type: String,
-    default:
-      "Student at University. Loves to build new tools using popular technologies as a creator."
+    default: "Kişisel bilgi eklenmedi."
   },
   ppLink: {
     type: String,
-    default: "img/img_avatar3.png"
+    default:
+      "https://firebasestorage.googleapis.com/v0/b/refern-7c476.appspot.com/o/candidate.png?alt=media&token=202833cb-3834-49bc-94b9-a69b27710616"
   },
   location: {
     type: String,
-    default: "No Location",
+    default: "Lokasyon eklenmedi",
     required: true,
     trim: true
   },
