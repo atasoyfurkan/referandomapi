@@ -13,12 +13,23 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/:id", async (req, res) => {
-  const mainCards = await MainCard.findById(req.params.id).populate({
-    path: "comments",
-    populate: { path: "owner" }
-  });
+  const mainCards = await MainCard.find()
+    .limit(parseInt(req.params.id))
+    .populate({
+      path: "comments",
+      populate: { path: "owner" }
+    });
+  console.log(mainCards);
   res.send(mainCards);
 });
+
+// router.get("/:id", async (req, res) => {
+//   const mainCards = await MainCard.findById(req.params.id).populate({
+//     path: "comments",
+//     populate: { path: "owner" }
+//   });
+//   res.send(mainCards);
+// });
 
 router.put("/:id", [auth], async (req, res) => {
   // const { error } = validate(req.body);
